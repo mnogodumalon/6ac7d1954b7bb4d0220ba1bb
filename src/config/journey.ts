@@ -31,6 +31,7 @@ export interface OccupancyRule {
 
 export const OCCUPANCY: Partial<Record<EntityKey, OccupancyRule>> = {
   // <custom:occupancy>
+  sendungen: { from: 'beginn', to: 'ende', resource: 'sender' },
   // </custom:occupancy>
 };
 
