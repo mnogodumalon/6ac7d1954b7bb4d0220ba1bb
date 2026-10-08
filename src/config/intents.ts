@@ -43,7 +43,7 @@ export interface IntentLink {
 
 export const INTENTS: IntentLink[] = [
   // <custom:intents>
-  { path: '/intents/sendung-einplanen', label: { de: 'Sendung einplanen', en: 'Schedule a show' }, icon: IconCalendarPlus, description: 'Sendung auf einem Sender einplanen und Überschneidungen prüfen' },
+  { path: '/intents/sendung-einplanen', label: { de: 'Sendung einplanen', en: 'Schedule a show' }, icon: IconCalendarPlus, description: { de: 'Sendung auf einem Sender einplanen und Überschneidungen prüfen', en: 'Schedule a show on a channel and check for overlaps' } },
   // </custom:intents>
 ];
 
@@ -63,5 +63,5 @@ export const INTENTS_PENDING = false;
  * pulsing "werden erstellt …" in every deployed Phase-1 bundle forever — no
  * code path redeploys Phase 1 without the flag (live 03.09.2026).
  */
-export const INTENTS_PENDING_SINCE: string | null = '2026-10-08T17:24:17+00:00';
+export const INTENTS_PENDING_SINCE: string | null = null;
 export const PENDING_MAX_MINUTES = 30;

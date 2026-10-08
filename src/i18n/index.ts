@@ -1693,7 +1693,7 @@ export const LABELS: Record<CoreLocale, LabelBundle> = {
         },
         "lookups": {
           "genre": {
-            "spielfilm": "Movie",
+            "spielfilm": "Feature Film",
             "serie": "Series",
             "nachrichten": "News",
             "dokumentation": "Documentary",

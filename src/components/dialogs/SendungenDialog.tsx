@@ -356,7 +356,7 @@ export function SendungenDialog({ open, onClose, onSubmit, defaultValues, record
         <Label htmlFor="titel">{fieldLabel('sendungen', 'titel')} <span className="text-destructive" aria-hidden="true">*</span></Label>
         <Input
           id="titel"
-          placeholder="z. B. Tagesschau"
+          placeholder=""
           value={fields.titel ?? ''}
           onChange={e => setFields(f => ({ ...f, titel: e.target.value }))}
           required
@@ -371,7 +371,7 @@ export function SendungenDialog({ open, onClose, onSubmit, defaultValues, record
         <Label htmlFor="sender">{fieldLabel('sendungen', 'sender')} <span className="text-destructive" aria-hidden="true">*</span></Label>
         <Combobox
           id="sender"
-          placeholder="Welcher Sender?"
+          placeholder=""
           items={senderListAll.map(r => ({
             id: r.record_id,
             label: String(r.fields.sendername ?? r.record_id),
@@ -391,7 +391,7 @@ export function SendungenDialog({ open, onClose, onSubmit, defaultValues, record
         <Label htmlFor="beginn">{fieldLabel('sendungen', 'beginn')} <span className="text-destructive" aria-hidden="true">*</span></Label>
         <DatePicker
           id="beginn"
-          placeholder="Wann beginnt die Sendung?"
+          placeholder=""
           mode="datetime"
           value={fields.beginn ?? null}
           onChange={v => setFields(f => ({ ...f, beginn: v ?? undefined }))}
@@ -407,7 +407,7 @@ export function SendungenDialog({ open, onClose, onSubmit, defaultValues, record
         <Label htmlFor="ende">{fieldLabel('sendungen', 'ende')}</Label>
         <DatePicker
           id="ende"
-          placeholder="Wann endet die Sendung?"
+          placeholder=""
           mode="datetime"
           value={fields.ende ?? null}
           onChange={v => setFields(f => ({ ...f, ende: v ?? undefined }))}
@@ -421,7 +421,7 @@ export function SendungenDialog({ open, onClose, onSubmit, defaultValues, record
           value={lookupKey(fields.genre) ?? ''}
           onValueChange={v => setFields(f => ({ ...f, genre: v === 'none' ? undefined : v as any }))}
         >
-          <SelectTrigger id="genre" className="max-sm:h-11"><SelectValue placeholder="z. B. Serie, Show" /></SelectTrigger>
+          <SelectTrigger id="genre" className="max-sm:h-11"><SelectValue placeholder="" /></SelectTrigger>
           <SelectContent>
             <SelectItem value="none">—</SelectItem>
             <SelectItem value="spielfilm">{lookupLabel('sendungen', 'genre', 'spielfilm') ?? 'Spielfilm'}</SelectItem>
@@ -441,7 +441,7 @@ export function SendungenDialog({ open, onClose, onSubmit, defaultValues, record
         <Label htmlFor="beschreibung">{fieldLabel('sendungen', 'beschreibung')}</Label>
         <Textarea
           id="beschreibung"
-          placeholder="Worum geht es in der Sendung?"
+          placeholder=""
           value={fields.beschreibung ?? ''}
           onChange={e => setFields(f => ({ ...f, beschreibung: e.target.value }))}
           rows={3}
@@ -538,7 +538,7 @@ export function SendungenDialog({ open, onClose, onSubmit, defaultValues, record
         <Label htmlFor="hinweise">{fieldLabel('sendungen', 'hinweise')}</Label>
         <Textarea
           id="hinweise"
-          placeholder="Weitere Hinweise zur Sendung"
+          placeholder=""
           value={fields.hinweise ?? ''}
           onChange={e => setFields(f => ({ ...f, hinweise: e.target.value }))}
           rows={3}

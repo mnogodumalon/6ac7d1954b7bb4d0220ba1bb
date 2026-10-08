@@ -321,7 +321,7 @@ export function SenderDialog({ open, onClose, onSubmit, defaultValues, recordId,
         <Label htmlFor="sendername">{fieldLabel('sender', 'sendername')} <span className="text-destructive" aria-hidden="true">*</span></Label>
         <Input
           id="sendername"
-          placeholder="z. B. Das Erste"
+          placeholder=""
           value={fields.sendername ?? ''}
           onChange={e => setFields(f => ({ ...f, sendername: e.target.value }))}
           required
@@ -340,7 +340,7 @@ export function SenderDialog({ open, onClose, onSubmit, defaultValues, recordId,
           inputMode="decimal"
           step="any"
           {...numberInputProps(formEnhancements, 'kanalnummer')}
-          placeholder="z. B. 1"
+          placeholder=""
           value={fields.kanalnummer !== undefined ? fields.kanalnummer : (computedValues['kanalnummer'] ?? '')}
           onChange={e => setFields(f => ({ ...f, kanalnummer: clampNumberValue(formEnhancements, 'kanalnummer', e.target.value) }))}
         />
@@ -425,7 +425,7 @@ export function SenderDialog({ open, onClose, onSubmit, defaultValues, recordId,
           id="website"
           type="url"
           inputMode="url"
-          placeholder="z. B. https://www.ard.de"
+          placeholder=""
           value={fields.website ?? ''}
           onChange={e => setFields(f => ({ ...f, website: e.target.value }))}
         />

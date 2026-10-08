@@ -1,7 +1,7 @@
 /**
  * useSendungEinplanenFlow — the plumbing of the flow « Sendung einplanen », generated from the plan.
  *
- * Writes `sendungen`: asks `titel`, `sender`, `beginn`, `ende`, `genre`, `altersfreigabe`, `wiederholung`, `beschreibung`, `hinweise`.
+ * Writes `sendungen`: asks `ende`, `genre`, `titel`, `beginn`, `sender`, `hinweise`, `beschreibung`, `wiederholung`, `altersfreigabe`.
  * The hook OWNS: the form(s) with exactly these fields and the plan's required
  * ingredients, one record search per picked field (columns and filter from
  * the plan), and the submit plan with its fixed and derived values. A page
@@ -16,19 +16,19 @@
  *   messages  the sentence for an empty required field, per field
  *
  *   const flow = useSendungEinplanenFlow({
- *     steps: { sender: 1, titel: 2, beginn: 2, ende: 2, genre: 2, altersfreigabe: 2, wiederholung: 2, beschreibung: 2, hinweise: 2 },
+ *     steps: { sender: 1, ende: 2, genre: 2, titel: 2, beginn: 2, hinweise: 2, beschreibung: 2, wiederholung: 2, altersfreigabe: 2 },
  *     items: { sender: r => ({ id: r.id, title: fieldText(r, 'sendername') }) },
  *   });
  *   <IntentWizardShell forms={flow.forms} draftKey={flow.draftKey} …>
  *     <EntitySelectStep {...flow.picks.sender.select} {...flow.pick('sender')} />
- *     <Bound form={flow.forms.sendungen} name="titel" />
- *     <Bound form={flow.forms.sendungen} name="beginn" />
  *     <Bound form={flow.forms.sendungen} name="ende" />
  *     <Bound form={flow.forms.sendungen} name="genre" />
- *     <Bound form={flow.forms.sendungen} name="altersfreigabe" />
- *     <Bound form={flow.forms.sendungen} name="wiederholung" />
- *     <Bound form={flow.forms.sendungen} name="beschreibung" />
+ *     <Bound form={flow.forms.sendungen} name="titel" />
+ *     <Bound form={flow.forms.sendungen} name="beginn" />
  *     <Bound form={flow.forms.sendungen} name="hinweise" />
+ *     <Bound form={flow.forms.sendungen} name="beschreibung" />
+ *     <Bound form={flow.forms.sendungen} name="wiederholung" />
+ *     <Bound form={flow.forms.sendungen} name="altersfreigabe" />
  *     <StepNav onNext={() => flow.validateStep(n)} />
  *     {!flow.submit.done && <SummaryStep forms={flow.formList} submit={flow.submit} />}
  *     {flow.submit.result && <SuccessStep result={flow.submit.result} forms={flow.formList} submit={flow.submit} />}
@@ -94,10 +94,10 @@ function hasValues(form: StepForm): boolean {
 export function useSendungEinplanenFlow(options: SendungEinplanenFlowOptions = {}) {
   const steps = { ...DEFAULT_STEPS, ...(options.steps ?? {}) } as Record<string, number>;
   const sendungen = useStepForm('sendungen', {
-    fields: ["titel", "sender", "beginn", "ende", "genre", "altersfreigabe", "wiederholung", "beschreibung", "hinweise"],
-    steps: only(steps, ["titel", "sender", "beginn", "ende", "genre", "altersfreigabe", "wiederholung", "beschreibung", "hinweise"]) as Record<string, number>,
-    initial: only(options.initial as FormValues | undefined, ["titel", "sender", "beginn", "ende", "genre", "altersfreigabe", "wiederholung", "beschreibung", "hinweise"]),
-    messages: only(options.messages as Record<string, string> | undefined, ["titel", "sender", "beginn", "ende", "genre", "altersfreigabe", "wiederholung", "beschreibung", "hinweise"]),
+    fields: ["ende", "genre", "titel", "beginn", "sender", "hinweise", "beschreibung", "wiederholung", "altersfreigabe"],
+    steps: only(steps, ["ende", "genre", "titel", "beginn", "sender", "hinweise", "beschreibung", "wiederholung", "altersfreigabe"]) as Record<string, number>,
+    initial: only(options.initial as FormValues | undefined, ["ende", "genre", "titel", "beginn", "sender", "hinweise", "beschreibung", "wiederholung", "altersfreigabe"]),
+    messages: only(options.messages as Record<string, string> | undefined, ["ende", "genre", "titel", "beginn", "sender", "hinweise", "beschreibung", "wiederholung", "altersfreigabe"]),
   });
   const forms: SendungEinplanenForms = { sendungen };
   const formList: StepForm[] = [sendungen];
