@@ -1,0 +1,16 @@
+{
+  "SenderDialog.tsx": {
+    "sendername": "z. B. Das Erste",
+    "kanalnummer": "z. B. 1",
+    "website": "z. B. https://www.ard.de"
+  },
+  "SendungenDialog.tsx": {
+    "titel": "z. B. Tagesschau",
+    "sender": "Welcher Sender?",
+    "beginn": "Wann beginnt die Sendung?",
+    "ende": "Wann endet die Sendung?",
+    "genre": "z. B. Serie, Show",
+    "beschreibung": "Worum geht es in der Sendung?",
+    "hinweise": "Weitere Hinweise zur Sendung"
+  }
+}

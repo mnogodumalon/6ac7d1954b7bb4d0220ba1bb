@@ -1,0 +1,262 @@
+{
+  "appgroup_id": "6ac7d1954b7bb4d0220ba1bb",
+  "appgroup_name": "Fernsehprogramm",
+  "apps": {
+    "sender": {
+      "app_id": "6ac7d1819cf8ddc45ffbe857",
+      "name": "Sender",
+      "main": false,
+      "controls": {
+        "sendername": {
+          "identifier": "sendername",
+          "label": "Sendername",
+          "type": "string",
+          "subtype": "text",
+          "fulltype": "string/text",
+          "description": "A string value not longer than 4000 characters (or `null`/`None`).",
+          "required": true,
+          "in_list": true,
+          "in_mobile_list": true,
+          "in_text": true,
+          "in_structured_search": null,
+          "in_fulltext_search": true,
+          "in_expert_search": true
+        },
+        "kanalnummer": {
+          "identifier": "kanalnummer",
+          "label": "Kanalnummer",
+          "type": "number",
+          "subtype": null,
+          "fulltype": "number",
+          "description": "A decimal number value (or `null`/`None`).",
+          "required": false,
+          "in_list": true,
+          "in_mobile_list": true,
+          "in_text": true,
+          "in_structured_search": null,
+          "in_fulltext_search": true,
+          "in_expert_search": true,
+          "precision": null
+        },
+        "senderkategorie": {
+          "identifier": "senderkategorie",
+          "label": "Senderkategorie",
+          "type": "lookup",
+          "subtype": "select",
+          "fulltype": "lookup/select",
+          "description": "One selected option of multiple available options (or `null`/`None`).\n\nThe available options are defined in the `lookup_data` attribute of this control.\n\nThe field value will be the key in this `lookup_data` attribute (or `null`/`None`).\n\nDisplayed as single-select field in HTML pages.",
+          "required": false,
+          "in_list": true,
+          "in_mobile_list": false,
+          "in_text": false,
+          "in_structured_search": null,
+          "in_fulltext_search": true,
+          "in_expert_search": true,
+          "lookup_data": {
+            "oeffentlich_rechtlich": "Öffentlich-rechtlich",
+            "privat": "Privat",
+            "nachrichten": "Nachrichten",
+            "sport": "Sport",
+            "spartenkanal": "Spartenkanal"
+          }
+        },
+        "website": {
+          "identifier": "website",
+          "label": "Website",
+          "type": "string",
+          "subtype": "url",
+          "fulltype": "string/url",
+          "description": "An URL value according to RFC 3986 (or `null`/`None`).",
+          "required": false,
+          "in_list": true,
+          "in_mobile_list": false,
+          "in_text": false,
+          "in_structured_search": null,
+          "in_fulltext_search": true,
+          "in_expert_search": true
+        },
+        "logo": {
+          "identifier": "logo",
+          "label": "Logo",
+          "type": "file",
+          "subtype": null,
+          "fulltype": "file",
+          "description": "An uploaded file (or `null`/`None`).\n\nThe field value will be the URL to download the file in the form `https://my.living-apps.de/files/6ac7d1819cf8ddc45ffbe857/data/<record-id>/<control-identifier>/<internal-id>` (or `null`/`None`).",
+          "required": false,
+          "in_list": true,
+          "in_mobile_list": false,
+          "in_text": false,
+          "in_structured_search": null,
+          "in_fulltext_search": true,
+          "in_expert_search": true
+        }
+      }
+    },
+    "sendungen": {
+      "app_id": "6ac7d1857425f5e66ea8c3c7",
+      "name": "Sendungen",
+      "main": false,
+      "controls": {
+        "titel": {
+          "identifier": "titel",
+          "label": "Titel",
+          "type": "string",
+          "subtype": "text",
+          "fulltype": "string/text",
+          "description": "A string value not longer than 4000 characters (or `null`/`None`).",
+          "required": true,
+          "in_list": true,
+          "in_mobile_list": true,
+          "in_text": true,
+          "in_structured_search": null,
+          "in_fulltext_search": true,
+          "in_expert_search": true
+        },
+        "sender": {
+          "identifier": "sender",
+          "label": "Sender",
+          "type": "applookup",
+          "subtype": "select",
+          "fulltype": "applookup/select",
+          "description": "A reference to a LivingApp record from the target lookup app 'Sender' with the id `6ac7d1819cf8ddc45ffbe857` (or `null`/`None`).\n\nThe field value will be a valid record URL in the form `https://my.living-apps.de/rest/apps/6ac7d1819cf8ddc45ffbe857/records/<record-id>` (or `null`/`None`).\n\nWhen writing, either pass a record URL through exactly as this API returned it, or send the portable relative form `/apps/6ac7d1819cf8ddc45ffbe857/records/<record-id>`. Other equivalent record-URL forms are accepted as well.\n\nDisplayed as single-select field in HTML pages.",
+          "required": true,
+          "in_list": true,
+          "in_mobile_list": true,
+          "in_text": true,
+          "in_structured_search": null,
+          "in_fulltext_search": true,
+          "in_expert_search": true,
+          "lookup_app": "https://my.living-apps.de/rest/apps/6ac7d1819cf8ddc45ffbe857"
+        },
+        "beginn": {
+          "identifier": "beginn",
+          "label": "Beginn",
+          "type": "date",
+          "subtype": "datetimeminute",
+          "fulltype": "date/datetimeminute",
+          "description": "A specific moment in time consisting of year, month, day, hour and minute (or `null`/`None`)\n\nThe field value will be a string in the format `<YYYY>-<MM>-<DD>T<HH>:<MM>` (or `null`/`None`).\n\nFor example: `2000-02-29T11:30`.\n\nFor `POST`/`PUT`/`PATCH` requests the REST API uses a liberal parsing approach so that strings like `2026`, `February 29, 2000 12:34 MEST`, `letztes Jahr` etc. will be accepted as value datetime values. However this runs the risk of parsing ambiguous values incorrectly. To ensure reliable parsing it is best to use the canonical format specified above.",
+          "required": true,
+          "in_list": true,
+          "in_mobile_list": false,
+          "in_text": false,
+          "in_structured_search": null,
+          "in_fulltext_search": true,
+          "in_expert_search": true
+        },
+        "ende": {
+          "identifier": "ende",
+          "label": "Ende",
+          "type": "date",
+          "subtype": "datetimeminute",
+          "fulltype": "date/datetimeminute",
+          "description": "A specific moment in time consisting of year, month, day, hour and minute (or `null`/`None`)\n\nThe field value will be a string in the format `<YYYY>-<MM>-<DD>T<HH>:<MM>` (or `null`/`None`).\n\nFor example: `2000-02-29T11:30`.\n\nFor `POST`/`PUT`/`PATCH` requests the REST API uses a liberal parsing approach so that strings like `2026`, `February 29, 2000 12:34 MEST`, `letztes Jahr` etc. will be accepted as value datetime values. However this runs the risk of parsing ambiguous values incorrectly. To ensure reliable parsing it is best to use the canonical format specified above.",
+          "required": false,
+          "in_list": true,
+          "in_mobile_list": false,
+          "in_text": false,
+          "in_structured_search": null,
+          "in_fulltext_search": true,
+          "in_expert_search": true
+        },
+        "genre": {
+          "identifier": "genre",
+          "label": "Genre",
+          "type": "lookup",
+          "subtype": "select",
+          "fulltype": "lookup/select",
+          "description": "One selected option of multiple available options (or `null`/`None`).\n\nThe available options are defined in the `lookup_data` attribute of this control.\n\nThe field value will be the key in this `lookup_data` attribute (or `null`/`None`).\n\nDisplayed as single-select field in HTML pages.",
+          "required": false,
+          "in_list": true,
+          "in_mobile_list": false,
+          "in_text": false,
+          "in_structured_search": null,
+          "in_fulltext_search": true,
+          "in_expert_search": true,
+          "lookup_data": {
+            "spielfilm": "Spielfilm",
+            "serie": "Serie",
+            "nachrichten": "Nachrichten",
+            "dokumentation": "Dokumentation",
+            "sport": "Sport",
+            "show": "Show",
+            "kinder": "Kinder",
+            "unterhaltung": "Unterhaltung"
+          }
+        },
+        "beschreibung": {
+          "identifier": "beschreibung",
+          "label": "Beschreibung",
+          "type": "string",
+          "subtype": "textarea",
+          "fulltype": "string/textarea",
+          "description": "A string value that can contain multiple lines of text (or `null`/`None`).",
+          "required": false,
+          "in_list": false,
+          "in_mobile_list": false,
+          "in_text": false,
+          "in_structured_search": null,
+          "in_fulltext_search": null,
+          "in_expert_search": true
+        },
+        "altersfreigabe": {
+          "identifier": "altersfreigabe",
+          "label": "Altersfreigabe",
+          "type": "lookup",
+          "subtype": "select",
+          "fulltype": "lookup/select",
+          "description": "One selected option of multiple available options (or `null`/`None`).\n\nThe available options are defined in the `lookup_data` attribute of this control.\n\nThe field value will be the key in this `lookup_data` attribute (or `null`/`None`).\n\nDisplayed as single-select field in HTML pages.",
+          "required": false,
+          "in_list": false,
+          "in_mobile_list": false,
+          "in_text": false,
+          "in_structured_search": null,
+          "in_fulltext_search": null,
+          "in_expert_search": true,
+          "lookup_data": {
+            "ab_0": "Ab 0 Jahren",
+            "ab_6": "Ab 6 Jahren",
+            "ab_12": "Ab 12 Jahren",
+            "ab_16": "Ab 16 Jahren",
+            "ab_18": "Ab 18 Jahren"
+          }
+        },
+        "wiederholung": {
+          "identifier": "wiederholung",
+          "label": "Wiederholung",
+          "type": "bool",
+          "subtype": null,
+          "fulltype": "bool",
+          "description": "A boolean value, i.e. `true` or `false` (or `null`/`None`).",
+          "required": false,
+          "in_list": false,
+          "in_mobile_list": false,
+          "in_text": false,
+          "in_structured_search": null,
+          "in_fulltext_search": null,
+          "in_expert_search": true
+        },
+        "hinweise": {
+          "identifier": "hinweise",
+          "label": "Hinweise",
+          "type": "string",
+          "subtype": "textarea",
+          "fulltype": "string/textarea",
+          "description": "A string value that can contain multiple lines of text (or `null`/`None`).",
+          "required": false,
+          "in_list": false,
+          "in_mobile_list": false,
+          "in_text": false,
+          "in_structured_search": null,
+          "in_fulltext_search": null,
+          "in_expert_search": true
+        }
+      }
+    }
+  },
+  "metadata": {
+    "apps_list": [
+      "Sender",
+      "Sendungen"
+    ]
+  }
+}

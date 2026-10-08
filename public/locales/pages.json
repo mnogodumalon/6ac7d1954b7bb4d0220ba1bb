@@ -1,0 +1,27 @@
+{
+  "pages": {
+    "en": {
+      "Ab 16 heute": "From 4 PM today",
+      "Als Nächstes um {0}: „{1}“ auf {2}.": "Next at {0}: \"{1}\" on {2}.",
+      "Als Wiederholung gekennzeichnet": "Marked as rerun",
+      "Heute ist nichts geplant — als Nächstes „{0}“ am {1}.": "Nothing scheduled today — next up \"{0}\" on {1}.",
+      "Heute ist nichts geplant.": "Nothing scheduled today.",
+      "Heute läuft nichts mehr.": "Nothing more airing today.",
+      "Heute nach Beginn": "Today after start",
+      "Heute sind alle {0} Sendungen gelaufen.": "All {0} shows have aired today.",
+      "Läuft": "On air",
+      "Läuft gerade: {0}.": "Now playing: {0}.",
+      "Läuft gerade: {0}. Danach um {1} „{2}“ auf {3}.": "Now playing: {0}. Next at {1}: \"{2}\" on {3}.",
+      "Läuft jetzt": "On air now",
+      "Plane deine erste Sendung ein.": "Schedule your first show.",
+      "Sendung einplanen": "Schedule show",
+      "Sendung verschoben": "Show rescheduled",
+      "Sendungen pro Genre": "Shows per genre",
+      "Sendungen pro Sender": "Shows per channel",
+      "Wiederholung": "Rerun",
+      "Wiederholung entfernt": "Rerun removed",
+      "Wiederholungen heute": "Reruns today"
+    }
+  },
+  "v": 1
+}

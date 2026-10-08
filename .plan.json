@@ -1,0 +1,112 @@
+{
+  "version": 1,
+  "language": "de",
+  "understanding": {
+    "summary": "Die Anwendung ist ein Fernsehprogramm: Sie verwaltet Sender mit Kanalnummer, Kategorie, Website und Logo sowie die Sendungen, die auf den Sendern laufen, mit Beginn, Ende, Genre, Altersfreigabe und Hinweisen.",
+    "roles": [
+      "Programmredaktion",
+      "Zuschauerinformation"
+    ],
+    "main_tasks": [
+      "Sender pflegen",
+      "Sendungen mit Beginn und Ende einplanen",
+      "Programm nach Sender, Genre und Zeit ansehen",
+      "Wiederholungen und Altersfreigaben kennzeichnen"
+    ],
+    "platform_roles": [
+      {
+        "persona": "Programmredaktion",
+        "role": "datenverarbeitung",
+        "apps": [
+          "sender",
+          "sendungen"
+        ]
+      },
+      {
+        "persona": "Zuschauerinformation",
+        "role": "minimal",
+        "apps": [
+          "sender",
+          "sendungen"
+        ]
+      }
+    ]
+  },
+  "flows": [
+    {
+      "slug": "sendung-einplanen",
+      "label": {
+        "de": "Sendung einplanen",
+        "en": "Schedule a show"
+      },
+      "description": "Eine Sendung auf einem Sender einplanen: Sender aus der Liste wählen, Beginn und Ende festlegen und prüfen, dass sich auf dem Sender nichts überschneidet.",
+      "priority": "must",
+      "writes": [
+        {
+          "entity": "sendungen",
+          "op": "create",
+          "when": "always",
+          "fields": {
+            "titel": "user",
+            "sender": "picked",
+            "beginn": "user",
+            "ende": "user",
+            "genre": "user",
+            "altersfreigabe": "user",
+            "wiederholung": "user",
+            "beschreibung": "user",
+            "hinweise": "user"
+          },
+          "needs": {}
+        }
+      ],
+      "required": [],
+      "brief": "# Flow `sendung-einplanen` — Sendung einplanen\nEine Sendung auf einem Sender einplanen: Sender aus der Liste wählen, Beginn und Ende festlegen und prüfen, dass sich auf dem Sender nichts überschneidet.\n\n## Your hook — import it, never rebuild what it owns\n`import { useSendungEinplanenFlow } from '@/lib/journey/flows/SendungEinplanen';` — generated from the Schreibliste below. It OWNS the form(s), one record search per picked field (columns and filter from the plan) and the submit plan with every fixed and derived value. You compose: `flow.forms.<entity>` for <Bound>/<Field>, `{...flow.picks.<field>.select} {...flow.pick('<field>')}` (or `flow.pickMany` for a multi pick) for <EntitySelectStep>, `flow.validateStep(n)` in StepNav.onNext, `flow.submit` + `flow.formList` for SummaryStep/SuccessStep, `flow.reset()`; what the hook does not own reads through its door `flow.port` — availability `useOccupancy(flow.port, '<entity>', { resource })`, a count `useRecordCount(flow.port, …)` — never import servicePort next to the hook. Options: `steps` (field → step), `items` (how a hit reads, per pick: sender), `initial`, `messages`. The hook's docblock in .lane-context.md shows the exact call. Never import servicePort, useStepForm, useJourneySubmit, useRecordSearch or useDashboardData in this page — check-intents refuses a page that uses the hook and any of them.\n\n## Steps (in this order)\n1. Sender auswählen\n2. Titel, Beginn und Ende eingeben\n3. Genre, Altersfreigabe und Wiederholung angeben\n4. Beschreibung und Hinweise ergänzen\n5. Prüfung auf Überschneidung und speichern\n\n## Schreibliste — the ONLY writes this flow makes (the gate compares your plan steps with this list)\n- creates `sendungen`:\n    - `titel`: the user enters it (bind it through the layer: form.field/…)\n    - `sender`: from the record the user picks in this flow\n    - `beginn`: the user enters it (bind it through the layer: form.field/…)\n    - `ende`: the user enters it (bind it through the layer: form.field/…)\n    - `genre`: the user enters it (bind it through the layer: form.field/…)\n    - `altersfreigabe`: the user enters it (bind it through the layer: form.field/…)\n    - `wiederholung`: the user enters it (bind it through the layer: form.field/…)\n    - `beschreibung`: the user enters it (bind it through the layer: form.field/…)\n    - `hinweise`: the user enters it (bind it through the layer: form.field/…)\n\n## Reads\n- `sender` columns sendername, kanalnummer, senderkategorie\n\n## Checks BEFORE the write (block the submit with the message when they fail)\n- no_overlap (from=`sendungen.beginn`, to=`sendungen.ende`, resource=`sendungen.sender`) — message: „Auf diesem Sender läuft zu dieser Zeit bereits eine andere Sendung.“\n\n## Success page\n- shows: `sendungen.titel`, `sendungen.beginn`, `sendungen.sender`\n- next flows to offer: `sendung-einplanen`\n"
+    }
+  ],
+  "public_pages": [],
+  "tools": [],
+  "covered_by_platform": [
+    {
+      "wish": "Sender und Sendungen erfassen und bearbeiten",
+      "feature": "record_form"
+    },
+    {
+      "wish": "Programm durchsuchen und nach Zeit oder Genre sortieren",
+      "feature": "search_filter"
+    },
+    {
+      "wish": "Übersicht, wie viele Sendungen pro Sender oder Genre laufen",
+      "feature": "distribution_view"
+    },
+    {
+      "wish": "Programmliste als Tabelle weitergeben",
+      "feature": "csv_json_export"
+    }
+  ],
+  "ownership": {
+    "sendungen": {
+      "titel": "intent:sendung-einplanen",
+      "sender": "intent:sendung-einplanen",
+      "beginn": "intent:sendung-einplanen",
+      "ende": "intent:sendung-einplanen",
+      "genre": "intent:sendung-einplanen",
+      "altersfreigabe": "intent:sendung-einplanen",
+      "wiederholung": "intent:sendung-einplanen",
+      "beschreibung": "intent:sendung-einplanen",
+      "hinweise": "intent:sendung-einplanen"
+    }
+  },
+  "dashboard": {
+    "focus": [
+      "Sendungen heute nach Beginn",
+      "Sendungen pro Sender",
+      "Sendungen pro Genre"
+    ],
+    "hints": [
+      "Beginn und Ende der Sendungen sind die wichtigsten Zeitangaben",
+      "Wiederholungen und Altersfreigabe sollten auf einen Blick sichtbar sein"
+    ],
+    "wishes": []
+  }
+}
